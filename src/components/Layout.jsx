@@ -37,9 +37,7 @@ const Layout = ({ children }) => {
               <NavLink href="#roadmap">
                 <FaRoad className="text-[#86e5ff]" /> Roadmap
               </NavLink>
-              <NavLink href="#about">
-                <FaInfoCircle className="text-[#86e5ff]" /> About
-              </NavLink>
+             
             </div>
 
             {/* Mobile Menu Button */}
@@ -91,13 +89,7 @@ const Layout = ({ children }) => {
                 >
                   Roadmap
                 </MobileNavLink>
-                <MobileNavLink 
-                  href="#about" 
-                  icon={<FaInfoCircle />}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  About
-                </MobileNavLink>
+               
               </div>
             </div>
           </motion.div>
