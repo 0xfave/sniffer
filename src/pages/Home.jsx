@@ -706,12 +706,9 @@ const Footer = () => (
         <div className="flex gap-4">
           <SocialButton 
             icon={<FaTwitter />} 
-            href="https://twitter.com/TrenchSniffer" 
+            href="https://x.com/TrenchSniffer" 
           />
-          <SocialButton 
-            icon={<FaDiscord />} 
-            href="https://discord.gg/trenchsniffer" 
-          />
+          
         </div>
 
         <div className="h-px w-full max-w-sm bg-gradient-to-r from-transparent via-[#86e5ff]/20 to-transparent" />
