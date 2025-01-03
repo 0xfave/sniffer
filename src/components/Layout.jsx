@@ -102,9 +102,23 @@ const Layout = ({ children }) => {
 };
 
 const NavLink = ({ href, children }) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    const navbarHeight = 80; // Adjust this value based on your navbar height
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  };
+
   return (
     <motion.a
       href={href}
+      onClick={handleClick}
       className="text-white/70 hover:text-white transition-colors flex items-center gap-2 text-sm lg:text-base"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -115,10 +129,24 @@ const NavLink = ({ href, children }) => {
 };
 
 const MobileNavLink = ({ href, children, icon, onClick }) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    const navbarHeight = 80; // Adjust this value based on your navbar height
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+    onClick(); // Close mobile menu
+  };
+
   return (
     <motion.a
       href={href}
-      onClick={onClick}
+      onClick={handleClick}
       className="text-white/70 hover:text-white transition-colors flex items-center gap-4 text-xl px-4 py-2"
       whileHover={{ x: 10 }}
       whileTap={{ scale: 0.95 }}

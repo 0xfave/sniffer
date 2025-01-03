@@ -420,7 +420,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section id="features" className="relative py-32 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 w-full h-1/2 bg-gradient-to-b from-[#86e5ff]/5 to-transparent" />
@@ -498,7 +498,7 @@ const Roadmap = () => {
   ];
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section id="roadmap" className="relative py-32 overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
