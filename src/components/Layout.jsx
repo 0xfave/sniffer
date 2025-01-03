@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
                 className="w-6 h-6 md:w-8 md:h-8"
               >
                 <img 
-                  src="/src/assets/logo.png"
+                  src="/logo.png"
                   alt="Trench Sniffer Logo"
                   className="w-full h-full object-contain"
                 />
