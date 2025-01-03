@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaRobot, FaRoad, FaInfoCircle, FaCube, FaBars, FaTimes } from 'react-icons/fa';
+import { FaRobot, FaRoad, FaInfoCircle, FaCube, FaBars, FaTimes, FaTelegram, FaTwitter } from 'react-icons/fa';
 
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,17 +30,38 @@ const Layout = ({ children }) => {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex items-center space-x-8">
               <NavLink href="#features">
                 <FaCube className="text-[#86e5ff]" /> Features
               </NavLink>
               <NavLink href="#roadmap">
                 <FaRoad className="text-[#86e5ff]" /> Roadmap
               </NavLink>
-             
+              
+              {/* Social Links */}
+              <motion.a
+                href="https://x.com/TrenchSniffer"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-[#86e5ff] hover:text-white transition-colors"
+              >
+                <FaTwitter size={20} />
+              </motion.a>
+              <motion.a
+                href="https://t.me/+FkA5vAAt6UQwNzFk"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-[#86e5ff] hover:text-white transition-colors"
+              >
+                <FaTelegram size={20} />
+              </motion.a>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button and Launch Bot */}
             <div className="flex items-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -64,7 +85,7 @@ const Layout = ({ children }) => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Update Mobile Menu to include social links */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -89,7 +110,30 @@ const Layout = ({ children }) => {
                 >
                   Roadmap
                 </MobileNavLink>
-               
+
+                {/* Social Links in Mobile Menu */}
+                <div className="flex gap-6 px-4 pt-4">
+                  <motion.a
+                    href="https://x.com/TrenchSniffer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-[#86e5ff] hover:text-white transition-colors"
+                  >
+                    <FaTwitter size={24} />
+                  </motion.a>
+                  <motion.a
+                    href="https://t.me/+FkA5vAAt6UQwNzFk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-[#86e5ff] hover:text-white transition-colors"
+                  >
+                    <FaTelegram size={24} />
+                  </motion.a>
+                </div>
               </div>
             </div>
           </motion.div>
