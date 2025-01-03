@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cyber-gradient {
+  background: linear-gradient(
+    45deg,
+    rgba(134, 229, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(0) translateX(10px);
+  }
+  75% {
+    transform: translateY(10px) translateX(5px);
+  }
+}
+
+.floating {
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes reverse-slow-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 60s linear infinite;
+}
+
+.animate-reverse-slow-spin {
+  animation: reverse-slow-spin 45s linear infinite;
+}
+
+/* Add glow effect utilities */
+.glow {
+  box-shadow: 0 0 20px rgba(134, 229, 255, 0.3);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(134, 229, 255, 0.5);
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    filter: brightness(1) blur(120px);
+  }
+  50% {
+    filter: brightness(1.2) blur(100px);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.matrix-rain {
+  animation: matrix-rain 20s linear infinite;
+}
