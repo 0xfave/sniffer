@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { FaChartLine, FaWallet, FaRobot, FaBrain, FaTwitter, FaDiscord, FaTelegram } from 'react-icons/fa';
+import { FaChartLine, FaWallet, FaRobot, FaBrain, FaTwitter, FaDiscord, FaTelegram, FaRegCopy, FaRegCheckCircle } from 'react-icons/fa';
 
 const SocialButton = ({ icon, href = "#" }) => (
   <motion.a
@@ -209,34 +209,90 @@ const Home = () => {
 };
 
 // New Enhanced Components
-const LaunchButton = () => (
-  <motion.a
-    href="https://t.me/trenchsnifferbot"
-    target="_blank"
-    rel="noopener noreferrer"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    className="relative group inline-block"
-  >
-    <div className="absolute -inset-1 bg-gradient-to-r from-[#86e5ff] to-blue-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-    <div className="relative px-8 py-4 bg-black rounded-lg leading-none flex items-center">
-      <span className="text-[#86e5ff] group-hover:text-white transition duration-200">
-        Launch Bot
-      </span>
-      <motion.span
-        className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
-        animate={{ x: [0, 5, 0] }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+const LaunchButton = () => {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("MECAvZ12FTdPwvHSTEMxHYPvrSj77ELPZRE5Qb7pump");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+  };
+
+  return (
+    <div className="flex flex-col items-center lg:items-start gap-4">
+      <motion.a
+        href="https://t.me/trenchsnifferbot"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="relative group inline-block"
       >
-        →
-      </motion.span>
+        <div className="absolute -inset-1 bg-gradient-to-r from-[#86e5ff] to-blue-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+        <div className="relative px-8 py-4 bg-black rounded-lg leading-none flex items-center">
+          <span className="text-[#86e5ff] group-hover:text-white transition duration-200">
+            Launch Bot
+          </span>
+          <motion.span
+            className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
+            animate={{ x: [0, 5, 0] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            →
+          </motion.span>
+        </div>
+      </motion.a>
+
+      {/* Contract Address */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+        onClick={handleCopy}
+        className="relative group cursor-pointer"
+      >
+        <div className="text-sm text-gray-400 flex items-center gap-2 hover:text-[#86e5ff] transition-colors">
+          <span className="font-mono">MECAvZ12FTdPwvHSTEMxHYPvrSj77ELPZRE5Qb7pump</span>
+          <motion.div
+            className="flex items-center gap-1 bg-[#86e5ff]/10 px-2 py-1 rounded"
+            whileHover={{ scale: 1.05 }}
+          >
+            <AnimatePresence mode="wait">
+              {copied ? (
+                <motion.div
+                  key="check"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                  className="text-green-400"
+                >
+                  <FaRegCheckCircle size={16} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="copy"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                  className="text-[#86e5ff]"
+                >
+                  <FaRegCopy size={16} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+        <motion.div
+          className="absolute -inset-2 bg-gradient-to-r from-[#86e5ff]/5 to-blue-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        />
+      </motion.div>
     </div>
-  </motion.a>
-);
+  );
+};
 
 const TechSphere = () => {
   return (
