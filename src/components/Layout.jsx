@@ -50,7 +50,7 @@ const Layout = ({ children }) => {
                 className="bg-[#86e5ff] text-black px-4 md:px-6 py-2 rounded-full hover:bg-[#6bd4ff] transition-colors flex items-center gap-2 text-sm md:text-base"
               >
                 <FaRobot className="text-sm md:text-base" />
-                <a href="https://t.me/+FkA5vAAt6UQwNzFk" target="_blank" rel="noopener noreferrer">
+                <a href="https://t.me/trenchsnifferbot" target="_blank" rel="noopener noreferrer">
                   <span className="hidden sm:inline">Launch Bot</span>
                 </a>
               </motion.button>

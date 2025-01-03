@@ -211,7 +211,7 @@ const Home = () => {
 // New Enhanced Components
 const LaunchButton = () => (
   <motion.a
-    href="https://t.me/+FkA5vAAt6UQwNzFk"
+    href="https://t.me/trenchsnifferbot"
     target="_blank"
     rel="noopener noreferrer"
     whileHover={{ scale: 1.05 }}
