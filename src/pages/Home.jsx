@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { FaChartLine, FaWallet, FaRobot, FaBrain, FaTwitter, FaDiscord } from 'react-icons/fa';
+import { FaChartLine, FaWallet, FaRobot, FaBrain, FaTwitter, FaDiscord, FaTelegram } from 'react-icons/fa';
 
 const SocialButton = ({ icon, href = "#" }) => (
   <motion.a
@@ -708,7 +708,10 @@ const Footer = () => (
             icon={<FaTwitter />} 
             href="https://x.com/TrenchSniffer" 
           />
-          
+          <SocialButton 
+            icon={<FaTelegram />} 
+            href="https://t.me/+FkA5vAAt6UQwNzFk"
+          />
         </div>
 
         <div className="h-px w-full max-w-sm bg-gradient-to-r from-transparent via-[#86e5ff]/20 to-transparent" />
