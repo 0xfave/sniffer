@@ -514,12 +514,20 @@ const Roadmap = () => {
         </motion.div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="relative">
+          {/* Desktop Timeline */}
+          <div className="relative hidden md:block">
             {/* Connection Line */}
             <div className="absolute left-[50%] top-0 bottom-0 w-px bg-gradient-to-b from-[#86e5ff]/30 via-[#86e5ff]/10 to-transparent" />
             
             {milestones.map((milestone, index) => (
               <RoadmapItem key={index} {...milestone} index={index} isLeft={index % 2 === 0} />
+            ))}
+          </div>
+
+          {/* Mobile Timeline */}
+          <div className="md:hidden space-y-8">
+            {milestones.map((milestone, index) => (
+              <MobileRoadmapItem key={index} {...milestone} index={index} />
             ))}
           </div>
         </div>
@@ -594,6 +602,76 @@ const RoadmapItem = ({ phase, title, items, status, index, isLeft }) => (
     </div>
 
     <div className="flex-1" />
+  </motion.div>
+);
+
+const MobileRoadmapItem = ({ phase, title, items, status, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: index * 0.2 }}
+    className="relative"
+  >
+    {/* Vertical connection line */}
+    <div className="absolute left-6 top-12 bottom-0 w-px bg-gradient-to-b from-[#86e5ff]/30 via-[#86e5ff]/10 to-transparent" />
+
+    <div className="flex gap-6">
+      {/* Circle indicator */}
+      <motion.div
+        animate={{
+          boxShadow: [
+            '0 0 20px rgba(134,229,255,0.2)',
+            '0 0 40px rgba(134,229,255,0.4)',
+            '0 0 20px rgba(134,229,255,0.2)'
+          ]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center border-2 shrink-0
+          ${status === 'completed' ? 'border-[#86e5ff] bg-[#86e5ff]/20' :
+            status === 'current' ? 'border-blue-500 bg-blue-500/20' :
+            'border-gray-500 bg-gray-500/20'}`}
+      >
+        {status === 'completed' ? '✓' : index + 1}
+      </motion.div>
+
+      {/* Content */}
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        className="relative group flex-1"
+      >
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-[#86e5ff]/20 to-blue-500/20 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-500" />
+        <div className="relative p-6 rounded-lg border border-[#86e5ff]/20 bg-black/50 backdrop-blur-sm">
+          <div className="text-sm font-semibold text-[#86e5ff] mb-2">{phase}</div>
+          <h3 className="text-xl font-bold mb-4">{title}</h3>
+          <ul className="space-y-2">
+            {items.map((item, i) => (
+              <li key={i} className="text-gray-400 flex items-center gap-2">
+                <motion.div
+                  animate={{
+                    scale: status === 'completed' ? [1, 1.2, 1] : 1
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity
+                  }}
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    status === 'completed' ? 'bg-[#86e5ff]' :
+                    status === 'current' ? 'bg-blue-500' :
+                    'bg-gray-500'
+                  }`}
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+    </div>
   </motion.div>
 );
 
