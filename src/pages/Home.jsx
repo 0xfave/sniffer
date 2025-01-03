@@ -340,7 +340,7 @@ const TechSphere = () => {
             }}
           >
             <img 
-              src="/src/assets/logo.png"
+              src="/logo.png"
               alt="Trench Sniffer Logo"
               className="w-32 h-32 object-contain"
             />
@@ -686,7 +686,7 @@ const Footer = () => (
           className="flex items-center gap-2"
         >
           <motion.img 
-            src="/src/assets/logo.png"
+            src="/logo.png"
             alt="Logo"
             className="w-8 h-8"
             animate={{
